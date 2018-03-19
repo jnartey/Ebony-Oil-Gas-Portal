@@ -1,6 +1,6 @@
 # Ebony Oil & Gas Portal
 
-Complete portal created from scratch using CakePHP a rapid and robust PHP MVC framework. Ebony Oil & Gas portal is an application to aid business at Ebony Oil & Gas and to promote a paperless business processes.
+Complete portal created from scratch using CakePHP a rapid and robust PHP MVC framework. Ebony Oil & Gas portal is an application to aid business at Ebony Oil & Gas and to promote paperless business processes.
 
 ## Getting Started
 
