@@ -1,51 +1,71 @@
-# CakePHP Application Skeleton
+# Ebony Oil & Gas Portal
 
-[![Build Status](https://img.shields.io/travis/cakephp/app/master.svg?style=flat-square)](https://travis-ci.org/cakephp/app)
-[![License](https://img.shields.io/packagist/l/cakephp/app.svg?style=flat-square)](https://packagist.org/packages/cakephp/app)
+Complete portal created from scratch using CakePHP a rapid and robust PHP MVC framework. Ebony Oil & Gas portal is an application to aid business at Ebony Oil & Gas and to promote paperless business processes.
 
-A skeleton for creating applications with [CakePHP](http://cakephp.org) 3.x.
+## Getting Started
 
-The framework source code can be found here: [cakephp/cakephp](https://github.com/cakephp/cakephp).
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-## Installation
+### Prerequisites
 
-1. Download [Composer](http://getcomposer.org/doc/00-intro.md) or update `composer self-update`.
-2. Run `php composer.phar create-project --prefer-dist cakephp/app [app_name]`.
+* A running webserver on your PC 
+* PHP version 5.6 or 7
+* MySQL 4+
 
-If Composer is installed globally, run
+### Installing
 
-```bash
-composer create-project --prefer-dist cakephp/app
+* Download or clone extract into your web home directory 
+* refer to CakePHP manual (https://book.cakephp.org/3.0/en/installation.html) for installation
+* Database included
+
+```
+/database
 ```
 
-In case you want to use a custom app dir name (e.g. `/myapp/`):
+## Running the tests
 
-```bash
-composer create-project --prefer-dist cakephp/app myapp
+None
+
+### Break down into end to end tests
+
+None
+
 ```
 
-You can now either use your machine's webserver to view the default home page, or start
-up the built-in webserver with:
-
-```bash
-bin/cake server -p 8765
 ```
 
-Then visit `http://localhost:8765` to see the welcome page.
+### And coding style tests
 
-## Update
+none
 
-Since this skeleton is a starting point for your application and various files
-would have been modified as per your needs, there isn't a way to provide
-automated upgrades, so you have to do any updates manually.
+```
 
-## Configuration
+```
 
-Read and edit `config/app.php` and setup the `'Datasources'` and any other
-configuration relevant for your application.
+## Deployment
 
-## Layout
+Refer to installation
 
-The app skeleton uses a subset of [Foundation](http://foundation.zurb.com/) CSS
-framework by default. You can, however, replace it with any other library or
-custom styles.
+## Built With
+
+* [CakePHP 3.x](https://www.cakephp.org) - PHP MVC framework
+* [FancyBox](http://fancyapps.com/fancybox/) - Javascript framework
+* [JQuery](https://jquery.com/) - Javascript framework
+* [Font Awesome](https://greensock.com/tweenmax) - Font Script
+* [Zurb Foundation](https://foundation.zurb.com/) - The most advanced responsive front-end framework
+
+## Contributing
+
+None
+
+## Versioning
+
+ 
+
+## Authors
+
+* **Jacob Nartey** - *Web Developer*
+
+## Acknowledgments
+
+* Fifth Light Media LLc
