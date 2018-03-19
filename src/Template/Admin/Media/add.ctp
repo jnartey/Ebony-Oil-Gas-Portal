@@ -1,0 +1,29 @@
+<?php
+/**
+  * @var \App\View\AppView $this
+  */
+?>
+<nav class="large-3 medium-4 columns" id="actions-sidebar">
+    <ul class="side-nav">
+        <li class="heading"><?= __('Actions') ?></li>
+        <li><?= $this->Html->link(__('List Media'), ['action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('List Departments'), ['controller' => 'Departments', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Department'), ['controller' => 'Departments', 'action' => 'add']) ?></li>
+    </ul>
+</nav>
+<div class="media form large-9 medium-8 columns content">
+    <?= $this->Form->create($media) ?>
+    <fieldset>
+        <legend><?= __('Add Media') ?></legend>
+        <?php
+            echo $this->Form->control('folder_name');
+            echo $this->Form->control('file_name');
+            echo $this->Form->control('size');
+            echo $this->Form->control('uploaded_by');
+            echo $this->Form->control('department_id', ['options' => $departments]);
+            echo $this->Form->control('uploaded_on');
+        ?>
+    </fieldset>
+    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->end() ?>
+</div>

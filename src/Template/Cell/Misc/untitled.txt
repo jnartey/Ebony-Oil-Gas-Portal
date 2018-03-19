@@ -1,0 +1,479 @@
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `department_categories` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `name`, `created`, `modified`) VALUES
+(1, 'Oil and Gas', '2017-05-19 01:30:59', '2017-05-19 01:37:34');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comments`
+--
+
+CREATE TABLE `department_comments` (
+  `id` int(255) UNSIGNED NOT NULL,
+  `comment_src` int(1) NOT NULL,
+  `source_id` int(255) DEFAULT NULL,
+  `project_id` int(255) NOT NULL,
+  `forum_id` int(255) NOT NULL,
+  `parent_id` int(255) DEFAULT NULL,
+  `user_id` int(11) NOT NULL,
+  `comment` longtext NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  `lft` int(255) NOT NULL,
+  `rght` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `departments_forums`
+--
+
+CREATE TABLE `department_forums` (
+  `id` int(100) UNSIGNED NOT NULL,
+  `department_id` int(100) NOT NULL,
+  `user_id` int(100) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` longtext NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `events`
+--
+
+CREATE TABLE `events` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(120) NOT NULL,
+  `description` mediumtext,
+  `location` varchar(255) NOT NULL,
+  `from_date` datetime NOT NULL,
+  `to_date` datetime NOT NULL,
+  `registration_deadline` datetime NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `user_id` int(100) NOT NULL,
+  `department_id` int(100) NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `events`
+--
+
+INSERT INTO `events` (`id`, `name`, `description`, `location`, `from_date`, `to_date`, `registration_deadline`, `image`, `user_id`, `status`, `created`, `modified`) VALUES
+(1, 'Ebony Oil and Gas Portal updates', '<p>Ichabod, on the contrary, had to win his way to the heart of a country coquette, beset with a labyrinth of whims and caprices, which were forever presenting new difficulties and impediments; and he had to encounter a host of fearful adversaries of real flesh and blood, the numerous rustic admirers, who beset every&nbsp;portal&nbsp;to her heart, keeping a watchful and angry eye upon each other, but ready to fly out in the common cause against any new competitor.</p>\r\n', 'Accra head office', '2017-05-25 00:00:00', '2017-05-31 00:00:00', '0000-00-00 00:00:00', '', 6, 0, '2017-05-24 08:15:38', '2017-05-24 22:23:40');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `events_members`
+--
+
+CREATE TABLE `events_members` (
+  `id` int(120) NOT NULL,
+  `event_id` int(200) NOT NULL,
+  `user_id` int(200) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `events_members`
+--
+
+INSERT INTO `events_members` (`id`, `event_id`, `user_id`, `created`, `modified`) VALUES
+(2, 1, 6, '2017-08-14 16:20:53', '2017-08-14 16:20:53');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `im_messages`
+--
+
+CREATE TABLE `im_messages` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `message` mediumtext NOT NULL,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `from` int(10) UNSIGNED NOT NULL,
+  `to` int(10) UNSIGNED NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `media`
+--
+
+CREATE TABLE `media` (
+  `id` int(11) NOT NULL,
+  `source_id` int(200) NOT NULL,
+  `parent_id` int(255) DEFAULT NULL,
+  `lft` int(255) NOT NULL,
+  `rght` int(255) NOT NULL,
+  `folder_name` varchar(120) NOT NULL,
+  `file_name` varchar(120) NOT NULL,
+  `size` int(11) NOT NULL DEFAULT '0',
+  `uploaded_by` int(10) UNSIGNED NOT NULL,
+  `department_id` int(10) UNSIGNED NOT NULL,
+  `media_access` int(1) NOT NULL DEFAULT '1',
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `media`
+--
+
+INSERT INTO `media` (`id`, `source_id`, `parent_id`, `lft`, `rght`, `folder_name`, `file_name`, `size`, `uploaded_by`, `department_id`, `media_access`, `created`, `modified`) VALUES
+(2, 9, NULL, 3, 4, 'New project 6', '', 0, 6, 1, 1, '2017-08-10 15:11:54', '2017-08-10 15:11:54'),
+(3, 10, NULL, 5, 8, 'New project fifthlight', '', 0, 6, 1, 1, '2017-08-10 15:17:43', '2017-08-16 00:45:52'),
+(4, 6, NULL, 9, 10, 'Fifth Light Media', '', 0, 6, 1, 1, '2017-08-10 15:27:32', '2017-08-10 15:27:32'),
+(5, 5, NULL, 11, 12, 'New project 2', '', 0, 6, 1, 1, '2017-08-13 15:02:12', '2017-08-16 04:36:27'),
+(7, 0, NULL, 13, 14, 'test new', '', 0, 5, 1, 1, '2017-08-15 07:05:49', '2017-08-15 07:05:49'),
+(8, 0, NULL, 15, 16, 'my folder', '', 0, 5, 1, 1, '2017-08-15 07:48:18', '2017-08-15 07:48:18'),
+(9, 0, NULL, 17, 18, '', '', 127158, 0, 0, 1, '2017-08-15 18:19:38', '2017-08-15 18:19:38'),
+(10, 0, NULL, 19, 20, '', '', 0, 0, 0, 1, '2017-08-15 18:19:38', '2017-08-15 18:19:38'),
+(11, 0, NULL, 21, 22, '', '', 121505, 0, 0, 1, '2017-08-15 18:24:26', '2017-08-15 18:24:26'),
+(12, 0, NULL, 23, 24, '', '', 0, 0, 0, 1, '2017-08-15 18:24:26', '2017-08-15 18:24:26'),
+(13, 2147483647, NULL, 25, 26, '', '20245965_1935769936710336_4898700626713249388_n.jpg', 105024, 0, 0, 1, '2017-08-15 18:27:08', '2017-08-15 18:27:08'),
+(14, 0, NULL, 27, 28, '', '', 0, 0, 0, 1, '2017-08-15 18:27:08', '2017-08-15 18:27:08'),
+(15, 1, NULL, 29, 30, 'Completion of ebony portal', '', 0, 3, 1, 1, '2017-08-16 00:51:31', '2017-08-16 00:58:45'),
+(16, 2, NULL, 37, 40, 'Test task 2', '', 0, 3, 1, 1, '2017-08-16 01:37:52', '2017-08-16 10:57:45'),
+(17, 3, NULL, 31, 32, 'New tasks **', '', 0, 3, 1, 1, '2017-08-16 02:05:07', '2017-08-16 02:15:10'),
+(18, 4, NULL, 33, 34, 'New tasks ***', '', 0, 3, 1, 1, '2017-08-16 02:05:33', '2017-08-16 02:19:34'),
+(19, 5, NULL, 35, 36, 'Test task 2', '', 0, 3, 1, 1, '2017-08-16 06:25:03', '2017-08-16 06:25:03'),
+(20, 6, 16, 38, 39, 'yet another task', '', 0, 3, 1, 1, '2017-08-16 10:58:10', '2017-08-16 10:58:10'),
+(21, 7, 3, 6, 7, 'Task one new', '', 0, 3, 1, 1, '2017-08-16 11:09:45', '2017-08-16 11:09:45');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `news`
+--
+
+CREATE TABLE `news` (
+  `id` int(150) UNSIGNED NOT NULL,
+  `category_id` int(150) DEFAULT NULL,
+  `title` varchar(255) NOT NULL,
+  `summary` text NOT NULL,
+  `story` longtext NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `user_id` int(100) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `news`
+--
+
+INSERT INTO `news` (`id`, `category_id`, `title`, `summary`, `story`, `image`, `user_id`, `created`, `modified`) VALUES
+(1, 1, 'Ebony Oil and Gas Intranet Under Construction ', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde harum rem, beatae ipsa consectetur quisquam. Rerum ratione, delectus atque tempore sed, suscipit ullam.', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde harum rem, beatae ipsa consectetur quisquam. Rerum ratione, delectus atque tempore sed, suscipit ullam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde harum rem, beatae ipsa consectetur quisquam. Rerum ratione, delectus atque tempore sed, suscipit ullam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde harum rem, beatae ipsa consectetur quisquam. Rerum ratione, delectus atque tempore sed, suscipit ullam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde harum rem, beatae ipsa consectetur quisquam. Rerum ratione, delectus atque tempore sed, suscipit ullam.</p>', '', 0, '2017-05-19 02:05:41', '2017-05-19 02:05:41');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `projects`
+--
+
+CREATE TABLE `projects` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `department_id` int(100) NOT NULL,
+  `name` varchar(120) NOT NULL,
+  `description` longtext NOT NULL,
+  `created_by` int(10) UNSIGNED NOT NULL,
+  `start_date` datetime NOT NULL COMMENT 'The deadline of the created project',
+  `end_date` datetime NOT NULL,
+  `status` varchar(12) NOT NULL COMMENT 'The status of the project. Can store values such as COMPLETED, PROGRESS, CANCELLED',
+  `progress` int(3) NOT NULL,
+  `monitor_timeline` int(1) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `projects`
+--
+
+INSERT INTO `projects` (`id`, `department_id`, `name`, `description`, `created_by`, `start_date`, `end_date`, `status`, `progress`, `monitor_timeline`, `created`, `modified`) VALUES
+(1, 1, 'Completion of ebony portal', '<p>no description for this project</p>\r\n', 3, '2017-08-01 00:58:14', '2017-08-10 07:10:00', '1', 25, 1, '2017-07-14 10:31:20', '2017-08-16 01:32:33'),
+(2, 1, 'Testing', '<p>testing all projects</p>\r\n', 3, '2017-08-16 05:47:00', '2017-09-30 05:47:00', '1', 0, 3, '2017-08-10 15:00:21', '2017-08-16 08:04:28'),
+(3, 1, 'New project', '<p>testing new project</p>\r\n', 6, '2017-08-31 00:00:00', '2017-09-29 00:00:00', '1', 0, 1, '2017-08-10 15:02:24', '2017-08-10 15:02:24'),
+(4, 1, 'New project 1', '<p>testing this new project</p>\r\n', 6, '2017-08-25 00:00:00', '2017-09-26 00:00:00', '1', 0, 1, '2017-08-10 15:03:34', '2017-08-10 15:03:34'),
+(5, 1, 'New project 2', '<p>test description</p>\r\n', 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1', 0, 1, '2017-08-10 15:05:08', '2017-08-16 04:36:27'),
+(6, 1, 'New project 3', '<p>new test description</p>\r\n', 6, '2017-08-24 00:00:00', '2017-09-30 00:00:00', '1', 0, 1, '2017-08-10 15:06:13', '2017-08-10 15:06:13'),
+(7, 1, 'New project 4', '<p>test description</p>\r\n', 6, '2017-08-24 00:00:00', '2017-09-30 00:00:00', '1', 0, 1, '2017-08-10 15:07:37', '2017-08-10 15:07:37'),
+(9, 1, 'New project 6', '<p>Yayyyy this really works</p>\r\n', 6, '2017-08-31 00:00:00', '2017-09-30 00:00:00', '1', 0, 1, '2017-08-10 15:11:54', '2017-08-10 15:11:54'),
+(10, 1, 'New project fifthlight', '<p>test description</p>\r\n', 3, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '1', 0, 1, '2017-08-10 15:17:43', '2017-08-16 00:45:52');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `projects_members`
+--
+
+CREATE TABLE `projects_members` (
+  `id` int(200) UNSIGNED NOT NULL,
+  `project_id` int(200) UNSIGNED NOT NULL,
+  `user_id` varchar(255) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `projects_members`
+--
+
+INSERT INTO `projects_members` (`id`, `project_id`, `user_id`, `created`, `modified`) VALUES
+(10, 1, '5', '2017-08-04 20:45:19', '2017-08-04 20:45:19'),
+(11, 2, '5', '2017-08-16 02:19:53', '2017-08-16 02:19:53');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tasks`
+--
+
+CREATE TABLE `tasks` (
+  `id` int(20) NOT NULL,
+  `user_id` varchar(100) NOT NULL,
+  `department_id` int(20) NOT NULL,
+  `project_id` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `progress` int(3) NOT NULL,
+  `deadline` datetime NOT NULL,
+  `status` int(1) NOT NULL DEFAULT '1',
+  `notes` mediumtext NOT NULL,
+  `attended_by` varchar(255) NOT NULL,
+  `reviewed_by` varchar(255) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tasks`
+--
+
+INSERT INTO `tasks` (`id`, `user_id`, `department_id`, `project_id`, `name`, `description`, `progress`, `deadline`, `status`, `notes`, `attended_by`, `reviewed_by`, `created`, `modified`) VALUES
+(1, '5', 1, '1', 'test', 'testing task', 0, '0000-00-00 00:00:00', 2, '', '5', '6', '2017-08-04 18:14:33', '2017-08-15 09:52:24'),
+(2, '5', 1, '2', 'New tasks *', 'To use the min, max, and step attributes the input first needs a type of number, range or one of the date/time values. In the case of type=\"number\", small arrow widgets are applied after the input which increment the current value of the input up or down. In the case of type=\"range\", the possible values of the slider GUI presented in supporting browsers will range from the min to the max value, incrementing by the value of the step attribute.', 20, '0000-00-00 00:00:00', 3, '', '3', '3', '2017-08-16 02:01:53', '2017-08-16 10:46:29'),
+(5, '', 1, '2', 'Test task 2', 'Test task description here', 25, '0000-00-00 00:00:00', 1, '', '', '', '2017-08-16 06:25:03', '2017-08-16 06:32:43'),
+(6, '5', 1, '2', 'yet another task', 'test', 0, '0000-00-00 00:00:00', 1, '', '', '', '2017-08-16 10:58:10', '2017-08-16 10:58:10'),
+(7, '', 1, '10', 'Task one new', 'this is just a test', 0, '0000-00-00 00:00:00', 1, '', '', '', '2017-08-16 11:09:45', '2017-08-16 11:09:45');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wiki`
+--
+
+CREATE TABLE `wiki` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `department_id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(200) NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `content` longtext,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `wiki`
+--
+
+INSERT INTO `wiki` (`id`, `department_id`, `user_id`, `title`, `content`, `created`, `modified`) VALUES
+(1, 1, 6, 'Test wiki', '<p>here is where you put wiki contents</p>\r\n', '2017-08-15 08:22:33', '2017-08-15 08:22:33');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `departments_forums`
+--
+ALTER TABLE `departments_forums`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `events`
+--
+ALTER TABLE `events`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `events_members`
+--
+ALTER TABLE `events_members`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`);
+
+--
+-- Indexes for table `im_messages`
+--
+ALTER TABLE `im_messages`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_im_message_user1_idx` (`from`),
+  ADD KEY `fk_im_message_user2_idx` (`to`);
+
+--
+-- Indexes for table `media`
+--
+ALTER TABLE `media`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `news`
+--
+ALTER TABLE `news`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `projects`
+--
+ALTER TABLE `projects`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_project_user_idx` (`created_by`);
+
+--
+-- Indexes for table `projects_members`
+--
+ALTER TABLE `projects_members`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tasks`
+--
+ALTER TABLE `tasks`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `wiki`
+--
+ALTER TABLE `wiki`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_wiki_department1_idx` (`department_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id` int(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+--
+-- AUTO_INCREMENT for table `departments_forums`
+--
+ALTER TABLE `departments_forums`
+  MODIFY `id` int(100) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `events`
+--
+ALTER TABLE `events`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `events_members`
+--
+ALTER TABLE `events_members`
+  MODIFY `id` int(120) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `im_messages`
+--
+ALTER TABLE `im_messages`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `media`
+--
+ALTER TABLE `media`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+--
+-- AUTO_INCREMENT for table `news`
+--
+ALTER TABLE `news`
+  MODIFY `id` int(150) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `projects`
+--
+ALTER TABLE `projects`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `projects_members`
+--
+ALTER TABLE `projects_members`
+  MODIFY `id` int(200) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+--
+-- AUTO_INCREMENT for table `tasks`
+--
+ALTER TABLE `tasks`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `wiki`
+--
+ALTER TABLE `wiki`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `im_messages`
+--
+ALTER TABLE `im_messages`
+  ADD CONSTRAINT `fk_im_message_user1` FOREIGN KEY (`from`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_im_message_user2` FOREIGN KEY (`to`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `projects`
+--
+ALTER TABLE `projects`
+  ADD CONSTRAINT `fk_project_user` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `wiki`
+--
+ALTER TABLE `wiki`
+  ADD CONSTRAINT `fk_wiki_department1` FOREIGN KEY (`department_id`) REFERENCES `departments` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
